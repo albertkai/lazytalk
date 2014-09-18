@@ -1,0 +1,244 @@
+<template name="settings">
+
+    <header>
+
+        <div>
+            <button class="toggle-tab _visible">?</button>
+            <button class="close"><i class="fa fa-arrow-down"></i></button>
+        </div>
+        <div>
+            <button class="toggle-tab _visible"><i class="fa fa-ban"></i></button>
+            <button class="close"><i class="fa fa-arrow-down"></i></button>
+        </div>
+        <div>
+            <button class="toggle-tab _visible"><i class="fa fa-gears"></i></button>
+            <button class="close"><i class="fa fa-arrow-down"></i></button>
+        </div>
+        <div>
+            <button class="toggle-tab _visible">@</button>
+            <button class="close"><i class="fa fa-arrow-down"></i></button>
+        </div>
+
+    </header>
+
+    <div class="body">
+
+        <div class="tabs">
+            <div id="settings-about" class="tab">
+                <h3>справка</h3>
+                <div class="body">
+
+                    <h4>О проекте</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi ipsam ipsum maxime ratione. Adipisci amet assumenda blanditiis consequuntur dolores est ipsam nisi similique unde. Architecto ipsum minus quia voluptas!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti ipsum magnam necessitatibus obcaecati odio praesentium repudiandae! Dignissimos harum iusto repellendus!</p>
+
+                    <h4>Как это работает?</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt repudiandae sint vero. Ad blanditiis commodi culpa delectus, laboriosam molestias odit quae quam totam veritatis. Eligendi excepturi magni possimus vel voluptatem!</p>
+
+                    <h4>что это за кнопочки?</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, aspernatur cum deleniti doloremque dolores expedita iste labore laborum mollitia nesciunt nulla officia perspiciatis possimus qui, rem repellat sed veniam voluptatem.</p>
+                </div>
+            </div>
+            <div id="ban-list" class="tab">
+
+                <h3>бан-лист</h3>
+
+                <div class="body">
+
+                    <div class="item">
+                        <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
+                        <div><img src="/img/avatar.png" alt="avatar"/></div>
+                        <div>
+                            <p class="name">Альберт</p>
+                            <p class="last-name">Кайгородов</p>
+                            <p class="username">@albert_kai</p>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
+                        <div><img src="/img/avatar.png" alt="avatar"/></div>
+                        <div>
+                            <p class="name">Альберт</p>
+                            <p class="last-name">Кайгородов</p>
+                            <p class="username">@albert_kai</p>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
+                        <div><img src="/img/avatar.png" alt="avatar"/></div>
+                        <div>
+                            <p class="name">Альберт</p>
+                            <p class="last-name">Кайгородов</p>
+                            <p class="username">@albert_kai</p>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
+                        <div><img src="/img/avatar.png" alt="avatar"/></div>
+                        <div>
+                            <p class="name">Альберт</p>
+                            <p class="last-name">Кайгородов</p>
+                            <p class="username">@albert_kai</p>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
+                        <div><img src="/img/avatar.png" alt="avatar"/></div>
+                        <div>
+                            <p class="name">Альберт</p>
+                            <p class="last-name">Кайгородов</p>
+                            <p class="username">@albert_kai</p>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
+                        <div><img src="/img/avatar.png" alt="avatar"/></div>
+                        <div>
+                            <p class="name">Альберт</p>
+                            <p class="last-name">Кайгородов</p>
+                            <p class="username">@albert_kai</p>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
+                        <div><img src="/img/avatar.png" alt="avatar"/></div>
+                        <div>
+                            <p class="name">Альберт</p>
+                            <p class="last-name">Кайгородов</p>
+                            <p class="username">@albert_kai</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button>очистить</button>
+            </div>
+            <div id="app-settings" class="tab">
+                <h3>настройки</h3>
+                <div class="body">
+
+                    <div>
+                        <div><p>Кто может мне звонит:</p></div>
+                        <div>
+                            <div class="rdo {{#if user.profile.settings.calls.all}}_active{{/if}}" data-name="calls" data-value="all">
+                                <div>
+                                    <div></div>
+                                </div>
+                                <p>Все пользователи</p>
+                            </div>
+                            <div class="rdo {{#if user.profile.settings.calls.onlyFriends}}_active{{/if}}" data-name="calls" data-value="onlyFriends">
+                                <div>
+                                    <div></div>
+                                </div>
+                                <p>Только друзья</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div><p>Ответ при поднесении:</p></div>
+                        <div>
+                            <div class="switcher {{#if user.profile.settings.phoneCloseMode}}_active{{/if}}" data-name="phone-close">
+                                <div class="cont">
+                                    <p>включен</p>
+                                    <p>выключен</p>
+                                    <div class="handle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div><p>Оповещения:</p></div>
+                        <div>
+                            <div class="chckbx {{#if user.profile.settings.notifications.messages}}_active{{/if}}" data-name="notifications" data-value="messages">
+                                <div>
+                                    <div></div>
+                                </div>
+                                <p>Сообщения</p>
+                            </div>
+                            <div class="chckbx {{#if user.profile.settings.notifications.notify}}_active{{/if}}" data-name="notifications" data-value="notify">
+                                <div>
+                                    <div></div>
+                                </div>
+                                <p>Напоминания</p>
+                            </div>
+                            <div class="chckbx {{#if user.profile.settings.notifications.requests}}_active{{/if}}" data-name="notifications" data-value="requests">
+                                <div>
+                                    <div></div>
+                                </div>
+                                <p>Запрос контактов</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
+                </div>
+            </div>
+
+
+            <div id="user-settings" class="tab">
+                <h3>@albert_kai</h3>
+                <div class="inputs">
+                    <div>
+                        <div>имя:</div>
+                        <div>
+                            <input type="text" id="first_name" placeholder="введите имя" value="{{user.profile.first_name}}"/>
+                            <div class="status">
+                                <i class="fa fa-check done"></i>
+                                <i class="fa fa-clock-o waiting"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>фамилия:</div>
+                        <div>
+                            <input type="text" id="last_name" placeholder="введите фамилию" value="{{user.profile.last_name}}"/>
+                            <div class="status">
+                                <i class="fa fa-check done"></i>
+                                <i class="fa fa-clock-o waiting"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>username:</div>
+                        <div>
+                            <input type="text" id="username" placeholder="введите username" value="{{user.profile.username}}"/>
+                            <div class="status">
+                                <i class="fa fa-check done"></i>
+                                <i class="fa fa-clock-o waiting"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>телефон:</div>
+                        <div>
+                            <input type="text" id="phone" data-field="first_name" placeholder="+71234567890" value="{{user.profile.phone}}"/>
+                            <div class="status">
+                                <i class="fa fa-check done"></i>
+                                <i class="fa fa-clock-o waiting"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="avatar">
+                    <img src="{{user.profile.avatar}}" alt=""/>
+                </div>
+                <button id="logout" class="save">выйти</button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+</template>

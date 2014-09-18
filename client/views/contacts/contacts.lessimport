@@ -1,0 +1,239 @@
+#contacts{
+  background: white;
+  header{
+    position: absolute;
+    height: 10%;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    z-index: 2;
+    #add-friend{
+      position: absolute;
+      top: 12px;
+      left: 15px;
+      background: @main-color;
+      width: 150px;
+      height: 33px;
+      .transition1(.4s);
+      &._opened{
+        span:nth-child(2) i {
+          .rotate(45deg);
+        }
+      }
+      span{
+        &:nth-child(1){
+          font-size: 18px;
+          position: relative;
+          top: -3px;
+          font-weight: 200;
+        }
+        &:nth-child(2){
+          font-size: 22px;
+          font-weight: 400;
+          i{
+            .transition(.4s);
+            .rotate(0);
+          }
+        }
+      }
+    }
+    #open-requests{
+      position: absolute;
+      background: @secondary-color;
+      width: 33px;
+      height: 33px;
+      font-size: 18px;
+      top: 12px;
+      left: 180px;
+      span{
+        position: absolute;
+        color: @secondary-color;
+        font-size: 15px;
+        top: -10px;
+        right: -12px;
+      }
+    }
+    .back{
+      position: absolute;
+      color: @main-color;
+      right: 5px;
+      font-size: 33px;
+    }
+  }
+  .find-friend{
+    position: absolute;
+    top: 10%;
+    height: 11%;
+    width: 100%;
+    background: @main-color;
+    z-index: 1;
+    padding-top: 4px;
+    input{
+      width: 75%;
+      margin: 10px 0 0 10px;
+    }
+    #search-facebook-friends{
+      position: absolute;
+      bottom: 1px;
+      right: 20px;
+      font-size: 36px;
+    }
+  }
+  .body{
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    top: 10%;
+    background: white;
+    z-index: 2;
+    .transition1(.4s);
+    >.search, >.friends-list, >.requests-list{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      .transition1(.4s);
+    }
+    >.requests-list{
+      visibility: hidden;
+      opacity: 0;
+    }
+    >.search{
+      visibility: hidden;
+      opacity: 0;
+      .searching, .no-results{
+        text-align: center;
+        padding: 10px;
+        color: @secondary-color;
+        font-size: 20px;
+        font-weight: 200;
+      }
+    }
+    &._shifted{
+      top: 21%;
+      height: 69%;
+      >.search{
+        visibility: visible;
+        opacity: 1;
+      }
+      >.friends-list{
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
+    .search-tip{
+      padding: 13px;
+      padding-right: 30px;
+      p, ul, li{
+        color: @gray-light;
+        font-weight: 200;
+      }
+      p{
+        font-size: 18px;
+        color: @secondary-color;
+      }
+      li span{
+         font-weight: 400;
+      }
+      li strong{
+        fomt-weight: bold;
+        color: @secondary-color;
+      }
+    }
+    .item{
+      position: relative;
+      height: 90px;
+      border-bottom: 1px solid @gray-lighter;
+      .transition1(.4s);
+      margin-left: -90px;
+      &._interact{
+        margin-left: -13px;
+      }
+      >div{
+        position: absolute;
+        top: 0;
+        height: 100%;
+        &:nth-child(1){
+          width: 90px;
+          left: 0px;
+          button{
+            display: block;
+            margin-top: 13px;
+            margin-left: 26px;
+            width: 64px;
+            height: 64px;
+            background: @main-color;
+            line-height: 65px;
+            color: white;
+            text-align: center;
+            .rounded(100px);
+          }
+        }
+        &:nth-child(2){
+          width: 90px;
+          left: 90px;
+          img{
+            margin: 13px;
+            width: 64px;
+            height: 64px;
+            .rounded(100px);
+          }
+        }
+        &:nth-child(3){
+          width: 230px;
+          left: 180px;
+          padding-top: 10px;
+          p{
+            font-size: 18px;
+            margin: 0;
+            &.name{
+              font-weight: 200;
+            }
+            &.last-name{
+              font-weight: 400;
+              text-transform: uppercase;
+            }
+            &.username{
+              color: @secondary-color;
+              font-weight: 300;
+              font-size: 16px;
+              line-height: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .stripe{
+    position: absolute;
+    z-index: 3;
+    right: 10px;
+    height: 76%;
+    top: 12%;
+    width: 20px;
+    background: @main-color;
+    color: white;
+    .rounded(10px);
+    text-align: center;
+    padding-top: 5px;
+    .transition1(.4s);
+    opacity: 0;
+    visibility: hidden;
+    &._visible{
+      visibility: visible;
+      opacity: 1;
+      -webkit-transition-delay: .4s;
+      -moz-transition-delay: .4s;
+      -ms-transition-delay: .4s;
+      -o-transition-delay: .4s;
+      transition-delay: .4s;
+    }
+    a{
+      color: white;
+      font-size: 12px;
+      line-height: 15px;
+      display: block;
+    }
+  }
+
+}

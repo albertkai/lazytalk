@@ -1,0 +1,98 @@
+.modal-over{
+  padding-top: 20px;
+  .close-modal{
+    position: absolute;
+    font-size: 50px;
+    top: -8px;
+    right: 10px;
+    color: @main-color;
+  }
+  img{
+    width: 170px;
+    height: 170px;
+    margin: 7px 0;
+  }
+  h3{
+    color: @secondary-color;
+    font-weight: 400;
+  }
+  p{
+    bolor: @gray;
+    font-size: 30px;
+    margin: 10px;
+    line-height: 1em;
+  }
+  .first-name{
+    font-weight: 200;
+    color: @gray-light;
+  }
+  .last-name{
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  .phone {
+    color: @secondary-color;
+    font-weight: 200;
+    font-size: 23px;
+  }
+  .facebook{
+    font-size: 46px;
+//    color: #3B5998;
+    color: @secondary-color;
+  }
+  .controls{
+    position: absolute;
+    width: 100%;
+    bottom: 25px;
+    >div{
+      position: relative;
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+      margin: 5px;
+      &._disabled{
+        button{
+          visibility: hidden;
+          opacity: 0;
+        }
+        .ovrl{
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+      .ovrl{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        visibility: hidden;
+        opacity: 0;
+        p{
+          color: @secondary-color;
+          font-size: 12px;
+          margin-top: -2px;
+        }
+        i{
+          color: @secondary-color;
+          font-size: 60px;
+          margin-top: 2px;
+        }
+      }
+      button{
+        width: 80px;
+        height: 80px;
+        background: @main-color;
+        font-weight: 200;
+        >i{
+          font-size: 24px;
+        }
+      }
+      &:nth-child(2){
+        button{
+          background: @green;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<head>
+    <title>lazytalk</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+</body>
+
+
+<template name="mainLayout">
+
+    <div class="modal-over">
+        {{>userInfo}}
+    </div>
+    <div class="wrap">
+
+        <section id="contacts">
+
+            {{>contacts}}
+
+        </section>
+
+        <section id="main">
+
+            {{>main}}
+
+        </section>
+
+        <section id="threads">
+
+            {{>threads}}
+
+        </section>
+
+        <section id="settings">
+
+            {{>settings}}
+
+        </section>
+
+    </div>
+</template>

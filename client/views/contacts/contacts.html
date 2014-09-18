@@ -1,0 +1,150 @@
+<template name="contacts">
+
+    <header>
+        <button id="add-friend"><span>добавить</span> <span><i class="fa fa-plus"></i></span></button>
+        <button id="open-requests"><i class="fa fa-user"></i><span class="count">2</span></button>
+        <button class="back"><i class="fa fa-arrow-right"></i></button>
+    </header>
+
+    <div class="find-friend">
+        <!--<input id="searchUsers" type="text" placeholder="поиск..."/>-->
+        {{> esInput index="search" placeholder="Search..." }}
+        <!--<input id="searchName" type="text" placeholder="имя"/>-->
+        <!--<input id="searchLastName" type="text" placeholder="фамилия"/>-->
+        <!--<button class="close"><i class="icon close-thin"></i></button>-->
+        <button id="search-facebook-friends"><i class="fa fa-facebook"></i></button>
+    </div>
+
+    <div class="body">
+
+        <div class="search">
+
+            {{#ifEsInputIsEmpty index="search"}}
+            <div class="search-tip">
+                <p>Чтобы найти по:</p>
+                <ul>
+                    <li><span>номеру телефона</span> - напишите его без дефисов и с <strong>+</strong> в начале</li>
+                    <li><span>по username</span> - в начале добавьте знак <strong>@</strong></li>
+                    <li><span>по имени и фамилии</span> - просто напишите их через пробел</li>
+                </ul>
+            </div>
+            {{/ifEsInputIsEmpty}}
+
+            {{#ifEsIsSearching index="search"}}
+            <div class="searching">Ищем...</div>
+            {{else}}
+            <div class="results-wrapper">
+                {{#esEach index="search"}}
+                {{> contactsUserItem}}
+                {{/esEach}}
+            </div>
+            {{/ifEsIsSearching}}
+
+            {{#ifEsHasNoResults index="search"}}
+            <div class="no-results">Ничего не найдено:(</div>
+            {{/ifEsHasNoResults}}
+
+        </div>
+
+        <div class="requests-list">
+
+            <div class="item">
+                <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
+                <div><img src="/img/avatar.png" alt="avatar"/></div>
+                <div>
+                    <p class="name">Альберт</p>
+                    <p class="last-name">Кайгородов</p>
+                    <p class="username">@albert_kai</p>
+                </div>
+            </div>
+            <div class="item">
+                <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
+                <div><img src="/img/avatar.png" alt="avatar"/></div>
+                <div>
+                    <p class="name">Альберт</p>
+                    <p class="last-name">Кайгородов</p>
+                    <p class="username">@albert_kai</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="friends-list">
+
+            {{#if gotFriends user.profile.friends.list}}
+
+                <div class="item">
+                    <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
+                    <div><img src="/img/avatar.png" alt="avatar"/></div>
+                    <div>
+                        <p class="name">Альберт</p>
+                        <p class="last-name">Кайгородов</p>
+                        <p class="username">@albert_kai</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
+                    <div><img src="/img/avatar.png" alt="avatar"/></div>
+                    <div>
+                        <p class="name">Альберт</p>
+                        <p class="last-name">Кайгородов</p>
+                        <p class="username">@albert_kai</p>
+                    </div>
+                </div>
+
+            {{else}}
+
+                <p>У вас пока нет друзей, но это только пока=) найдите их в поиске, или найдите ваших друзей по facebook</p>
+
+            {{/if}}
+
+
+        </div>
+    </div>
+
+    <div class="stripe _visible">
+        <a>а</a>
+        <a>б</a>
+        <a>в</a>
+        <a>г</a>
+        <a>д</a>
+        <a>е</a>
+        <a>ж</a>
+        <a>з</a>
+        <a>и</a>
+        <a>к</a>
+        <a>л</a>
+        <a>м</a>
+        <a>н</a>
+        <a>о</a>
+        <a>п</a>
+        <a>р</a>
+        <a>с</a>
+        <a>т</a>
+        <a>у</a>
+        <a>ф</a>
+        <a>х</a>
+        <a>ц</a>
+        <a>ш</a>
+        <a>щ</a>
+        <a>э</a>
+        <a>ю</a>
+        <a>я</a>
+    </div>
+
+
+</template>
+
+
+<template name="contactsUserItem">
+    <div class="item" data-id="{{_id}}">
+        <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
+        <div><img src="{{profile.avatar}}" alt="avatar"/></div>
+        <div>
+            <p class="name">{{profile.first_name}}</p>
+            <p class="last-name">{{profile.last_name}}</p>
+            <p class="username">@{{profile.username}}</p>
+        </div>
+    </div>
+</template>

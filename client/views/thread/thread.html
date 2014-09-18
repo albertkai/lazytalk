@@ -1,0 +1,169 @@
+<template name="main">
+
+    <header>
+        <img src="/img/logo_red.png" alt="logo"/>
+        <button id="open-contacts"><i class="fa fa-users"></i></button>
+        <button id="open-threads"><i class="fa fa-phone"></i></button>
+    </header>
+
+    <div class="body">
+        {{#if usersPage user._id}}
+            {{>user}}
+        {{else}}
+            {{>thread}}
+        {{/if}}
+    </div>
+
+
+</template>
+
+
+
+<template name="thread">
+    <section class="user">
+
+        <div class="status _waiting-for-answer">
+            <div>
+                <i class="fa fa-clock-o"></i>
+            </div>
+            <div>
+                <i class="fa fa-volume-up"></i>
+            </div>
+            <div>
+                <i class="fa fa-send"></i>
+            </div>
+            <div>
+                <i class="fa fa-circle"></i>rec
+            </div>
+        </div>
+
+        <img src="{{user.profile.avatar}}" alt=""/>
+        <p class="first-name">{{user.profile.first_name}}</p>
+        <p class="last-name">{{user.profile.last_name}}</p>
+
+    </section>
+
+    <section class="interact  _record">
+
+        <div class="record">
+
+            <button id="record-message">
+
+                <i class="fa fa-circle"></i>
+                R E C
+
+            </button>
+
+        </div>
+
+        <div class="play _paused">
+
+            <p class="time">0:00 / 0:33</p>
+
+            <div class="message">
+
+                <div class="overlay"></div>
+
+                <div class="position"></div>
+
+                <div class="controls">
+                    <button id="play-message"><i class="fa fa-play"></i></button>
+                    <button id="pause-message"><i class="fa fa-pause"></i></button>
+                </div>
+
+                <div class="action">
+                    <button id="repeat-message"><i class="fa fa-repeat"></i></button>
+                    <button id="rec-new-message"><i class="fa fa-check"></i></button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="recording">
+            <button id="stop-record">
+
+                <span class="time"><i class="fa fa-stop"></i> 0:23 / 3:00</span>
+
+            </button>
+        </div>
+
+        <div class="user-recording">
+
+            <div><i class="fa fa-arrow-up"></i></div>
+            <div><i class="fa fa-volume-up"></i></div>
+
+        </div>
+
+        <div class="recorded _paused">
+
+            <p class="time">0:00 / 0:33</p>
+
+            <div class="message">
+
+                <div class="overlay"></div>
+
+                <div class="position"></div>
+
+                <div class="controls">
+                    <button id="play-record"><i class="fa fa-play"></i></button>
+                    <button id="pause-record"><i class="fa fa-pause"></i></button>
+                </div>
+
+            </div>
+
+            <div class="action">
+
+                <button id="clear-message"><i class="fa fa-times"></i><br/>удалить</button>
+                <button id="add-message"><i class="fa fa-plus"></i><br/>добавить</button>
+                <button id="send-message"><i class="fa fa-send"></i><br/>отправить</button>
+
+            </div>
+
+        </div>
+
+        <div id="int-loader">
+
+        </div>
+
+        <div class="message-sent">
+
+            <p><i class="fa fa-check"></i><br/>Сообщение отправлено!</p>
+
+        </div>
+
+    </section>
+</template>
+
+
+
+<template name="user">
+
+    <section class="user">
+
+        <p class="its-you">это вы:)</p>
+        <img src="{{user.profile.avatar}}" alt="{{user.profile.first_name}}"/>
+        <p class="first-name">{{user.profile.first_name}}</p>
+        <p class="last-name">{{user.profile.last_name}}</p>
+
+    </section>
+
+    <section class="info">
+
+        <div>
+            <div>Общее время:</div>
+            <div>{{user.profile.info.total}}</div>
+        </div>
+        <div>
+            <div>Входящие:</div>
+            <div>{{user.profile.info.in}} ({{user.profile.info.inCount}})</div>
+        </div>
+        <div>
+            <div>Исходящие:</div>
+            <div>{{user.profile.info.out}} ({{user.profile.info.outCount}})</div>
+        </div>
+
+    </section>
+
+
+</template>
