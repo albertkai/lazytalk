@@ -2,13 +2,13 @@
 
     <header>
         <button id="add-friend"><span>добавить</span> <span><i class="fa fa-plus"></i></span></button>
-        <button id="open-requests"><i class="fa fa-user"></i><span class="count">2</span></button>
+        <button id="open-requests"><i class="fa fa-user"></i><span class="count">{{countRequests currentUser.profile.friends.requests}}</span></button>
         <button class="back"><i class="fa fa-arrow-right"></i></button>
     </header>
 
     <div class="find-friend">
         <!--<input id="searchUsers" type="text" placeholder="поиск..."/>-->
-        {{> esInput index="search" placeholder="Search..." }}
+        {{> esInput index="search" placeholder="Поиск..." }}
         <!--<input id="searchName" type="text" placeholder="имя"/>-->
         <!--<input id="searchLastName" type="text" placeholder="фамилия"/>-->
         <!--<button class="close"><i class="icon close-thin"></i></button>-->
@@ -48,24 +48,19 @@
 
         <div class="requests-list">
 
-            <div class="item">
-                <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
-                <div><img src="/img/avatar.png" alt="avatar"/></div>
+            {{#each currentUser.profile.friends.requests}}
+
+            <div class="item" data-id="{{id}}">
+                <div><button id="accept-request"><i class="fa fa-plus"></i></button></div>
+                <div><img src="{{avatar}}" alt="avatar"/></div>
                 <div>
-                    <p class="name">Альберт</p>
-                    <p class="last-name">Кайгородов</p>
-                    <p class="username">@albert_kai</p>
+                    <p class="name">{{first_name}}</p>
+                    <p class="last-name">{{last_name}}</p>
+                    <p class="username">@{{username}}</p>
                 </div>
             </div>
-            <div class="item">
-                <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
-                <div><img src="/img/avatar.png" alt="avatar"/></div>
-                <div>
-                    <p class="name">Альберт</p>
-                    <p class="last-name">Кайгородов</p>
-                    <p class="username">@albert_kai</p>
-                </div>
-            </div>
+
+            {{/each}}
 
         </div>
 
@@ -74,28 +69,31 @@
 
             {{#if gotFriends user.profile.friends.list}}
 
-                <div class="item">
+                {{#each currentUser.profile.friends.list}}
+
+                <div class="item" data-id="{{id}}">
                     <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
-                    <div><img src="/img/avatar.png" alt="avatar"/></div>
+                    <div><img src="{{avatar}}" alt="avatar"/></div>
                     <div>
-                        <p class="name">Альберт</p>
-                        <p class="last-name">Кайгородов</p>
-                        <p class="username">@albert_kai</p>
+                        <p class="name">{{first_name}}</p>
+                        <p class="last-name">{{last_name}}</p>
+                        <p class="username">@{{username}}</p>
                     </div>
                 </div>
-                <div class="item">
-                    <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
-                    <div><img src="/img/avatar.png" alt="avatar"/></div>
-                    <div>
-                        <p class="name">Альберт</p>
-                        <p class="last-name">Кайгородов</p>
-                        <p class="username">@albert_kai</p>
-                    </div>
-                </div>
+
+                {{/each}}
 
             {{else}}
 
-                <p>У вас пока нет друзей, но это только пока=) найдите их в поиске, или найдите ваших друзей по facebook</p>
+            <div class="contacts-empty">
+
+                <i class="fa fa-frown-o"></i>
+
+                <h3>Ваши контакты пусты..</h3>
+                <h2>Но это только пока!!</h2>
+                <p>Найдите друзей в поиске по номеру телефона, имени или username, или добавьте ваших друзей из facebook</p>
+
+            </div>
 
             {{/if}}
 
@@ -103,35 +101,35 @@
         </div>
     </div>
 
-    <div class="stripe _visible">
-        <a>а</a>
-        <a>б</a>
-        <a>в</a>
-        <a>г</a>
-        <a>д</a>
-        <a>е</a>
-        <a>ж</a>
-        <a>з</a>
-        <a>и</a>
-        <a>к</a>
-        <a>л</a>
-        <a>м</a>
-        <a>н</a>
-        <a>о</a>
-        <a>п</a>
-        <a>р</a>
-        <a>с</a>
-        <a>т</a>
-        <a>у</a>
-        <a>ф</a>
-        <a>х</a>
-        <a>ц</a>
-        <a>ш</a>
-        <a>щ</a>
-        <a>э</a>
-        <a>ю</a>
-        <a>я</a>
-    </div>
+    <!--<div class="stripe {{#if gotFriends user.profile.friends.list}}_visible{{/if}}">-->
+        <!--<a>а</a>-->
+        <!--<a>б</a>-->
+        <!--<a>в</a>-->
+        <!--<a>г</a>-->
+        <!--<a>д</a>-->
+        <!--<a>е</a>-->
+        <!--<a>ж</a>-->
+        <!--<a>з</a>-->
+        <!--<a>и</a>-->
+        <!--<a>к</a>-->
+        <!--<a>л</a>-->
+        <!--<a>м</a>-->
+        <!--<a>н</a>-->
+        <!--<a>о</a>-->
+        <!--<a>п</a>-->
+        <!--<a>р</a>-->
+        <!--<a>с</a>-->
+        <!--<a>т</a>-->
+        <!--<a>у</a>-->
+        <!--<a>ф</a>-->
+        <!--<a>х</a>-->
+        <!--<a>ц</a>-->
+        <!--<a>ш</a>-->
+        <!--<a>щ</a>-->
+        <!--<a>э</a>-->
+        <!--<a>ю</a>-->
+        <!--<a>я</a>-->
+    <!--</div>-->
 
 
 </template>
@@ -139,7 +137,7 @@
 
 <template name="contactsUserItem">
     <div class="item" data-id="{{_id}}">
-        <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
+        <div><button id="{{getFriendStatus _id}}"><i class="fa fa-plus"></i><i class="fa fa-check"></i><i class="fa fa-users"></i></button></div>
         <div><img src="{{profile.avatar}}" alt="avatar"/></div>
         <div>
             <p class="name">{{profile.first_name}}</p>

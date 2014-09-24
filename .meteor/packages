@@ -4,7 +4,6 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
 insecure
 less
 coffeescript
@@ -12,6 +11,9 @@ miguelvalverde:font-awesome-4.1.0
 iron:router
 accounts-password
 accounts-facebook
-accounts-ui-unstyled
 service-configuration
 matteodem:easy-search
+underscore
+noorderstorm:hammer
+arunoda:streams
+jeeeyul:moment-with-langs

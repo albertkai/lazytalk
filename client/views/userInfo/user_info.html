@@ -2,27 +2,33 @@
 
     <div class="close-modal"><i class="fa fa-times"></i></div>
 
-    <h3>@albertkai</h3>
+    <h3>@{{user.profile.username}}</h3>
 
-    <img src="/img/avatar.png" alt=""/>
+    <img src="{{user.profile.avatar}}" alt=""/>
 
-    <p class="first-name">Альберт</p>
-    <p class="last-name">Кайгородов</p>
-    <p class="phone">+79052088999</p>
+    <p class="first-name">{{user.profile.first_name}}</p>
+    <p class="last-name">{{user.profile.last_name}}</p>
+    <p class="phone">{{user.profile.phone}}</p>
 
     <div class="facebook"><i class="fa fa-facebook"></i></div>
 
     <div class="controls">
         <div>
-            <button><i class="fa fa-ban"></i><br/><span>забанить</span></button>
-            <!--<button><i class="fa fa-ban"></i><br/><span>убрать </span></button>-->
+            {{#if userBanned user._id}}
+                <button class="remove-from-ban"><i class="fa fa-ban"></i><br/><span>разбанить</span></button>
+            {{else}}
+                <button class="add-to-ban"><i class="fa fa-ban"></i><br/><span>забанить</span></button>
+            {{/if}}
         </div>
         <div>
-            <button><i class="fa fa-plus"></i><br/><span>в друзья</span></button>
-            <div class="ovrl">
-                <i class="fa fa-plus"></i>
-                <p>в контактах</p>
-            </div>
+            {{#if isInFriends user._id}}
+                <div class="ovrl">
+                    <i class="fa fa-plus"></i>
+                    <p>в контактах</p>
+                </div>
+            {{else}}
+                <button><i class="fa fa-plus"></i><br/><span>в друзья</span></button>
+            {{/if}}
         </div>
 
     </div>

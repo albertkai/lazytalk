@@ -4,7 +4,7 @@ Router.map ->
 
     waitOn: ->
 
-      Meteor.subscribe('users')
+      Meteor.subscribe('allUsers')
 
     action: ->
 
@@ -21,6 +21,11 @@ Router.map ->
   @route 'main', {
     template: 'mainLayout'
     path: '/:userId'
+    onAfterAction: ->
+      Session.set 'openedUserId', @params.userId
+      if $('.wrap').length > 0
+        $('#contacts').removeClass '_opened'
+        $('#threads').removeClass '_opened'
     data: ->
       user = Meteor.users.findOne({'_id': @params.userId})
       {

@@ -24,6 +24,12 @@
       &#open-threads{
         right: 2%;
       }
+      .count{
+        position: absolute;
+        top: 0;
+        right: -8px;
+        font-size: 16px;
+      }
     }
   }
   .user{
@@ -129,7 +135,7 @@
       .rounded(100px);
       margin-bottom: 15px;
     }
-    p{
+    p.first-name, p.last-name{
       bolor: @gray;
       font-size: 30px;
       margin: 10px;
@@ -316,15 +322,23 @@
         .position{
           position: absolute;
           height: 100%;
-          width: 30%;
+          width: 0;
           background: rgba(255, 255, 255, .5);
         }
-        .controls{
+        .handle{
           position: absolute;
           width: 100%;
           height: 100%;
-          top: 0;
-          left: 0;
+          opacity: 0;
+        }
+        .controls{
+          position: absolute;
+          width: 50px;
+          height: 50px;
+          top: 50%;
+          left: 50%;
+          margin-left: -25px;
+          margin-top: -25px;
           visibility: hidden;
           .transition(.3s);
           button{

@@ -44,6 +44,9 @@
       font-size: 18px;
       top: 12px;
       left: 180px;
+      &._requests-opened{
+        background: @green;
+      }
       span{
         position: absolute;
         color: @secondary-color;
@@ -121,6 +124,47 @@
         opacity: 0;
       }
     }
+    &._requests-list{
+      >.search{
+        visibility: hidden;
+        opacity: 0;
+      }
+      >.friends-list{
+        visibility: hidden;
+        opacity: 0;
+      }
+      >.requests-list{
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+    .contacts-empty{
+      text-align: center;
+      i{
+        font-size: 100px;
+        margin-top: 30px;
+        color: @main-color;
+      }
+      h3{
+        color: @main-color;
+        font-weight: 200;
+        margin: 0;
+        font-size: 20px;
+        margin-top: 7px;
+      }
+      h2{
+        margin: 0;
+        color: @main-color;
+        font-size: 22px;
+        font-weight: 500;
+        margin-top: 7px;
+      }
+      p{
+        color: @gray-light;
+        padding: 10px 5px;
+        font-weight: 200;
+      }
+    }
     .search-tip{
       padding: 13px;
       padding-right: 30px;
@@ -157,16 +201,62 @@
           width: 90px;
           left: 0px;
           button{
+            position: relative;
             display: block;
             margin-top: 13px;
             margin-left: 26px;
             width: 64px;
             height: 64px;
             background: @main-color;
-            line-height: 65px;
+            line-height: 60px;
             color: white;
             text-align: center;
+            font-size: 25px;
+            .transition(.3s);
             .rounded(100px);
+            &#add-to-friends, &#request-sent{
+              i{
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                text-align: center;
+                line-height: 65px;
+                .transition(.3s);
+                visibility: hidden;
+                opacity: 0;
+              }
+            }
+            &#add-to-friends{
+              background: @secondary-color;
+              i:nth-child(1){
+                visibility: visible;
+                opacity: 1;
+              }
+            }
+            &#request-sent{
+              background: transparent;
+              border: 1px solid @green;
+              color: @green;
+              opacity: .6;
+              i:nth-child(2){
+                visibility: visible;
+                opacity: 1;
+              }
+            }
+            &#in-friend-list{
+              background: @green;
+              opacity: .6;
+              i:nth-child(3){
+                visibility: visible;
+                opacity: 1;
+              }
+            }
+            &#accept-request{
+              background: @green;
+            }
           }
         }
         &:nth-child(2){

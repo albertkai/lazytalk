@@ -38,7 +38,7 @@ Accounts.onCreateUser (options, user)->
 
   }
 
-  requested = ['email', 'gender', 'first_name', 'last_name', 'locale', 'friends', 'phone']
+  requested = ['email', 'gender', 'first_name', 'last_name', 'locale', 'getFriends', 'phone']
   requested.forEach (name)->
     user.profile[name] = user.services.facebook[name]
 

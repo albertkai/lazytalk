@@ -23,10 +23,36 @@ Template.settings.events {
   'click #logout': ->
     Meteor.logout()
 
+  'click #delete-from-ban': (e)->
+    targetId = $(e.currentTarget).closest('.item').data('id')
+    Meteor.call 'removeFromBan', targetId, (err, res)->
+
+      if err
+        console.log err
+      else
+        console.log 'Пользователь с id "' + targetId + ' удален из бана'
+        Lazytalk.notify 'Да!', 'Удален из бана!', 'success'
+
+  'click #clear-ban-list': ->
+    Meteor.users.update {'_id': Meteor.userId()}, {$set: {'profile.banList': []}}, ->
+      Lazytalk.notify 'Да!', 'Бан-лист очищен!', 'success'
+
   'input #user-settings .inputs input[type="text"]': (e)->
     SettingsCtrl.updateInfo(e)
 
 }
+
+
+Template.settings.helpers {
+
+  gotBanned: ->
+    if !!Meteor.user()
+      if Meteor.user().profile.banList.length > 0
+        true
+      else
+        false
+}
+
 
 Template.settings.rendered = ->
 

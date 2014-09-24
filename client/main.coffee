@@ -1,3 +1,13 @@
+Meteor.subscribe 'allUsers'
+Meteor.subscribe 'threads'
+
+
+UI.body.rendered = ->
+  $('body').hammer()
+
+
+
+
 Template.mainLayout.rendered = ->
 
   console.log 'Main layout rendering'
@@ -25,6 +35,32 @@ Template.mainLayout.events {
   'click .switcher': (e)->
     $(e.currentTarget).toggleClass '_active'
     SettingsCtrl.updatePhoneClose()
+
+  'click .add-to-ban': ->
+
+    Meteor.call 'addToBan', Session.get('openedUserId'), (err, res)->
+
+      if err
+        console.log err
+      else
+        console.log 'Пользователь с id "' + Session.get('openedUserId') + ' добавлен в бан'
+
+  'click .remove-from-ban': ->
+
+    Meteor.call 'removeFromBan', Session.get('openedUserId'), (err, res)->
+
+      if err
+        console.log err
+      else
+        console.log 'Пользователь с id "' + Session.get('openedUserId') + ' удален из бана'
+
+  'click #top-logo': ->
+
+    Router.go '/' + Meteor.userId()
+
+  'swiperight #main': ->
+    console.log 'swiped'
+
 
 
 }

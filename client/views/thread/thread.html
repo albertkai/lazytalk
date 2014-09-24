@@ -1,8 +1,8 @@
 <template name="main">
 
     <header>
-        <img src="/img/logo_red.png" alt="logo"/>
-        <button id="open-contacts"><i class="fa fa-users"></i></button>
+        <img id="top-logo" src="/img/logo_red.png" alt="logo"/>
+        <button id="open-contacts"><i class="fa fa-users"></i><div class="count">{{countRequests currentUser.profile.friends.requests}}</div></button>
         <button id="open-threads"><i class="fa fa-phone"></i></button>
     </header>
 
@@ -20,6 +20,9 @@
 
 
 <template name="thread">
+
+    <audio id="audio" src="/audio/ivan_dorn_-_tak_silno_(zvukoff.ru).mp3"></audio>
+    
     <section class="user">
 
         <div class="status _waiting-for-answer">
@@ -43,7 +46,7 @@
 
     </section>
 
-    <section class="interact  _record">
+    <section class="interact _record">
 
         <div class="record">
 
@@ -58,13 +61,15 @@
 
         <div class="play _paused">
 
-            <p class="time">0:00 / 0:33</p>
+            <p class="time"><span></span> / <span></span></p>
 
             <div class="message">
 
                 <div class="overlay"></div>
 
                 <div class="position"></div>
+
+                <div class="handle"></div>
 
                 <div class="controls">
                     <button id="play-message"><i class="fa fa-play"></i></button>

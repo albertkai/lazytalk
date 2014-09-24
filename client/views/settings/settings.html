@@ -43,81 +43,42 @@
 
                 <h3>бан-лист</h3>
 
+                {{#if gotBanned}}
+
                 <div class="body">
 
-                    <div class="item">
-                        <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
-                        <div><img src="/img/avatar.png" alt="avatar"/></div>
+                    {{#each currentUser.profile.banList}}
+
+                    <div class="item" data-id="{{id}}">
+                        <div><button id="delete-from-ban"><i class="fa fa-times"></i></button></div>
+                        <div><img src="{{avatar}}" alt="avatar"/></div>
                         <div>
-                            <p class="name">Альберт</p>
-                            <p class="last-name">Кайгородов</p>
-                            <p class="username">@albert_kai</p>
+                            <p class="name">{{first_name}}</p>
+                            <p class="last-name">{{last_name}}</p>
+                            <p class="username">@{{username}}</p>
                         </div>
                     </div>
 
-                    <div class="item">
-                        <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
-                        <div><img src="/img/avatar.png" alt="avatar"/></div>
-                        <div>
-                            <p class="name">Альберт</p>
-                            <p class="last-name">Кайгородов</p>
-                            <p class="username">@albert_kai</p>
-                        </div>
-                    </div>
+                    {{/each}}
 
-                    <div class="item">
-                        <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
-                        <div><img src="/img/avatar.png" alt="avatar"/></div>
-                        <div>
-                            <p class="name">Альберт</p>
-                            <p class="last-name">Кайгородов</p>
-                            <p class="username">@albert_kai</p>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
-                        <div><img src="/img/avatar.png" alt="avatar"/></div>
-                        <div>
-                            <p class="name">Альберт</p>
-                            <p class="last-name">Кайгородов</p>
-                            <p class="username">@albert_kai</p>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
-                        <div><img src="/img/avatar.png" alt="avatar"/></div>
-                        <div>
-                            <p class="name">Альберт</p>
-                            <p class="last-name">Кайгородов</p>
-                            <p class="username">@albert_kai</p>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
-                        <div><img src="/img/avatar.png" alt="avatar"/></div>
-                        <div>
-                            <p class="name">Альберт</p>
-                            <p class="last-name">Кайгородов</p>
-                            <p class="username">@albert_kai</p>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div><button id="delete-friend"><i class="fa fa-times"></i></button></div>
-                        <div><img src="/img/avatar.png" alt="avatar"/></div>
-                        <div>
-                            <p class="name">Альберт</p>
-                            <p class="last-name">Кайгородов</p>
-                            <p class="username">@albert_kai</p>
-                        </div>
-                    </div>
 
                 </div>
 
-                <button>очистить</button>
+                <button id="clear-ban-list">очистить</button>
+
+                {{else}}
+
+                <div class="ban-list-empty">
+
+                    <i class="fa fa-smile-o"></i>
+                    <h2>Бан-лист пуст!</h2>
+                    <h3>Вот и отлично=)</h3>
+
+                </div>
+
+                {{/if}}
+
+
             </div>
             <div id="app-settings" class="tab">
                 <h3>настройки</h3>
@@ -126,13 +87,13 @@
                     <div>
                         <div><p>Кто может мне звонит:</p></div>
                         <div>
-                            <div class="rdo {{#if user.profile.settings.calls.all}}_active{{/if}}" data-name="calls" data-value="all">
+                            <div class="rdo {{#if currentUser.profile.settings.calls.all}}_active{{/if}}" data-name="calls" data-value="all">
                                 <div>
                                     <div></div>
                                 </div>
                                 <p>Все пользователи</p>
                             </div>
-                            <div class="rdo {{#if user.profile.settings.calls.onlyFriends}}_active{{/if}}" data-name="calls" data-value="onlyFriends">
+                            <div class="rdo {{#if currentUser.profile.settings.calls.onlyFriends}}_active{{/if}}" data-name="calls" data-value="onlyFriends">
                                 <div>
                                     <div></div>
                                 </div>
@@ -144,7 +105,7 @@
                     <div>
                         <div><p>Ответ при поднесении:</p></div>
                         <div>
-                            <div class="switcher {{#if user.profile.settings.phoneCloseMode}}_active{{/if}}" data-name="phone-close">
+                            <div class="switcher {{#if currentUser.profile.settings.phoneCloseMode}}_active{{/if}}" data-name="phone-close">
                                 <div class="cont">
                                     <p>включен</p>
                                     <p>выключен</p>
@@ -157,19 +118,19 @@
                     <div>
                         <div><p>Оповещения:</p></div>
                         <div>
-                            <div class="chckbx {{#if user.profile.settings.notifications.messages}}_active{{/if}}" data-name="notifications" data-value="messages">
+                            <div class="chckbx {{#if currentUser.profile.settings.notifications.messages}}_active{{/if}}" data-name="notifications" data-value="messages">
                                 <div>
                                     <div></div>
                                 </div>
                                 <p>Сообщения</p>
                             </div>
-                            <div class="chckbx {{#if user.profile.settings.notifications.notify}}_active{{/if}}" data-name="notifications" data-value="notify">
+                            <div class="chckbx {{#if currentUser.profile.settings.notifications.notify}}_active{{/if}}" data-name="notifications" data-value="notify">
                                 <div>
                                     <div></div>
                                 </div>
                                 <p>Напоминания</p>
                             </div>
-                            <div class="chckbx {{#if user.profile.settings.notifications.requests}}_active{{/if}}" data-name="notifications" data-value="requests">
+                            <div class="chckbx {{#if currentUser.profile.settings.notifications.requests}}_active{{/if}}" data-name="notifications" data-value="requests">
                                 <div>
                                     <div></div>
                                 </div>
@@ -185,12 +146,12 @@
 
 
             <div id="user-settings" class="tab">
-                <h3>@albert_kai</h3>
+                <h3>@{{currentUser.profile.username}}</h3>
                 <div class="inputs">
                     <div>
                         <div>имя:</div>
                         <div>
-                            <input type="text" id="first_name" placeholder="введите имя" value="{{user.profile.first_name}}"/>
+                            <input type="text" id="first_name" placeholder="введите имя" value="{{currentUser.profile.first_name}}"/>
                             <div class="status">
                                 <i class="fa fa-check done"></i>
                                 <i class="fa fa-clock-o waiting"></i>
@@ -200,7 +161,7 @@
                     <div>
                         <div>фамилия:</div>
                         <div>
-                            <input type="text" id="last_name" placeholder="введите фамилию" value="{{user.profile.last_name}}"/>
+                            <input type="text" id="last_name" placeholder="введите фамилию" value="{{currentUser.profile.last_name}}"/>
                             <div class="status">
                                 <i class="fa fa-check done"></i>
                                 <i class="fa fa-clock-o waiting"></i>
@@ -210,7 +171,7 @@
                     <div>
                         <div>username:</div>
                         <div>
-                            <input type="text" id="username" placeholder="введите username" value="{{user.profile.username}}"/>
+                            <input type="text" id="username" placeholder="введите username" value="{{currentUser.profile.username}}"/>
                             <div class="status">
                                 <i class="fa fa-check done"></i>
                                 <i class="fa fa-clock-o waiting"></i>
@@ -220,7 +181,7 @@
                     <div>
                         <div>телефон:</div>
                         <div>
-                            <input type="text" id="phone" data-field="first_name" placeholder="+71234567890" value="{{user.profile.phone}}"/>
+                            <input type="text" id="phone" data-field="first_name" placeholder="+71234567890" value="{{currentUser.profile.phone}}"/>
                             <div class="status">
                                 <i class="fa fa-check done"></i>
                                 <i class="fa fa-clock-o waiting"></i>
@@ -229,7 +190,7 @@
                     </div>
                 </div>
                 <div class="avatar">
-                    <img src="{{user.profile.avatar}}" alt=""/>
+                    <img src="{{currentUser.profile.avatar}}" alt=""/>
                 </div>
                 <button id="logout" class="save">выйти</button>
             </div>

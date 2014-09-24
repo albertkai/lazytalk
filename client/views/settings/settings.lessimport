@@ -192,6 +192,17 @@
         }
 
         &#ban-list{
+          .ban-list-empty{
+            i, h2, h3{
+              width: 100%;
+              text-align: center;
+              color: white;
+            }
+            i{
+              font-size: 100px;
+              margin-top: 70px;
+            }
+          }
           >button{
             bottom: 14px;
           }

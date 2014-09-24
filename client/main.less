@@ -97,6 +97,53 @@ input[type="text"], textarea{
   }
 
 }
+
+.notification-cont{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 5px 20px;
+  color: white;
+  opacity: 0.9;
+  height: 77px;
+  .translate(0, -77px);
+  .transition1(.4s);
+  &._opened{
+    .translate(0, 0);
+  }
+  &._success{
+    background: @green;
+  }
+  &._error{
+    background: @main-color;
+  }
+  >div{
+    height: 100%;
+    top: 0;
+    &:nth-child(1){
+      position: absolute;
+      width: 15%;
+      left: 0;
+      text-align: center;
+      line-height: 50px;
+      font-size: 30px;
+    }
+    &:nth-child(2){
+      position: relative;
+      width: 85%;
+      left: 15%;
+      h4{
+        margin: 12px 0 5px 0;
+      }
+      p{
+        font-weight: 200;
+      }
+    }
+  }
+}
+
 .switcher{
 
   position: relative;
